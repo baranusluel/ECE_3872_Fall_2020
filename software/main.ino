@@ -8,6 +8,8 @@
 #include <cpu.h>
 #include <Generic.h>
 #include <motor_shield_v1.h>
+#include <Servo.h> // Required by M1
+#include <Generic/GenericServo.h>
 
 #pragma GCC pop_options
 
@@ -24,17 +26,17 @@ const float noteFreqs[] =
 ////////////////////////////////
 CPU &cpu = Cpu;
 GenericButton resetButton = GenericButton(4);
-DCMotorV1 motor1 = DCMotorV1(7, 5, 8);
-DCMotorV1 motor2 = DCMotorV1(9, 6, 10);
+// NOTE: DC motor significantly slowing simulation, so only using servo for sim demo
+// DCMotorV1 motorDC = DCMotorV1(7, 5, 8);
+GenericServo motorServo = GenericServo();
 GenericRgbLedCc rgbLed = GenericRgbLedCc(11, 12, 13);
 GenericRotaryAngleSensor modeRotary = GenericRotaryAngleSensor(A2, 300);
 GenericRotaryAngleSensor distanceRotary = GenericRotaryAngleSensor(A3, 300);
-
 GenericBuzzer buzzer = GenericBuzzer(BUZZER_PIN);
 
 void peripheral_setup() {
-   motor1.begin();
-   motor2.begin();
+   // motorDC.begin();
+   motorServo.begin(6, 0.001, 0.002);
 }
 
 ////////////////////////////////
@@ -52,6 +54,8 @@ int recordingLen = 0; // Length of the recording. Used for appending to end duri
 int playbackIndx = 0; // Current index in recording array for playback
 
 int resetButtonCounter = 0; // Counts how long reset button is pressed
+
+// bool needReloadMotor = false; // Whether DC motor needs to be spun back up to reload position
 
 ////////////////////////////////
 // Helper function declarations
@@ -78,6 +82,8 @@ void loop_play_record();
 int read_input_note();
 // Plays the specified note on the speaker for a 0.5s duration.
 void play_note(int note);
+// Moves motors in a manner corresponding to the played note.
+void move_for_note(int note);
 
 ////////////////////////////////
 // Entry Points
@@ -133,8 +139,16 @@ void loop () {
          break;
    }
 
-   // Waits half a second, to maintain a 2Hz rate for note playing / recording
+   // Waits total of half a second, to maintain a 2Hz rate for note playing / recording.
    delay(500);
+   // // Half-way through delay, sends reverse command to DC motor if it needs to reload.
+   // delay(250);
+   // if (needReloadMotor) {
+   //    motorDC.run(1, 200);
+   //    needReloadMotor = false;
+   // }
+   // delay(250);
+   // motorDC.stop(); // DC motor should always start off stopped
 }
 
 ////////////////////////////////
@@ -161,7 +175,7 @@ void enter_idle() {
    // Blue LED when idling
    rgbLed.set(0, 0, 255);
    // Turn off motor
-   motor1.stop();
+   move_for_note(-1);
    // Turn off speaker
    buzzer.off();
    play_note(-1);
@@ -173,7 +187,7 @@ void enter_record() {
    // Red LED when recording (blinking?)
    rgbLed.set(255, 0, 0);
    // Turn off motor
-   motor1.stop();
+   move_for_note(-1);
    // Turn on sound
    buzzer.on();
 }
@@ -217,20 +231,21 @@ void loop_record() {
 }
 
 void loop_play_live() {
-   // Run motor
-   motor1.run(1,255);
+   // Read input sensor and move motors to the note
+   int note = read_input_note();
+   move_for_note(note);
 }
 
 void loop_play_record() {
-   // Run motor
-   motor1.run(0, 255);
-
    // Play note from recording array, if length is non-zero
    if (recordingLen > 0) {
       playbackIndx = playbackIndx % recordingLen; // playback loops
       int note = recording[playbackIndx];
       playbackIndx++;
       play_note(note);
+
+      // Move motor to note
+      move_for_note(note);
    } else {
       play_note(-1);
    }
@@ -251,4 +266,16 @@ void play_note(int note) {
       cpu.noTone(BUZZER_PIN);
    else
       cpu.tone(BUZZER_PIN, noteFreqs[note], 500);
+}
+
+void move_for_note(int note) {
+   if (note < 0 || note > 7) {
+      motorServo.write(0);
+      // motorDC.stop();
+   } else {
+      motorServo.write((note + 1) * 22.5); // divide range of motion equally into intervals of 180/8=22.5
+      // // Spin DC motor down to hit drum
+      // motorDC.run(0, 200);
+      // needReloadMotor = true;
+   }
 }
