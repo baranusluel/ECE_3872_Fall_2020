@@ -93,16 +93,17 @@ void loop () {
    // Use mode selection dial to set current state
    int pot = modeRotary.readAngle(); // potentiometer value ranging 0 to 300
    if (pot < 75) {
-      enter_idle();
+      if (state != State::IDLE) enter_idle();
    } else if (pot < 150) {
-      enter_record();
+      if (state != State::RECORD) enter_record();
    } else if (pot < 225) {
-      enter_play_live();
+      if (state != State::PLAY_LIVE) enter_play_live();
    } else {
-      enter_play_record();
+      if (state != State::PLAY_RECORD) enter_play_record();
    }
       
    // Reset button takes precedence over mode selection dial
+   // (i.e. we always enter idle for at least one iteration on a reset)
    if (resetButton()) {
       // If reset button was pressed for 3 seconds (counted every 0.5s)
       if (resetButtonCounter >= 5) {
@@ -148,9 +149,9 @@ void reset_recording() {
    // Flashes LED three times to indicate successful reset
    for (int i = 0; i < 3; i++) {
       rgbLed.set(255, 255, 255);
-      delay(100);
+      delay(150);
       rgbLed.set(0, 0, 0);
-      delay(100);
+      delay(150);
    }
 }
 
@@ -230,6 +231,8 @@ void loop_play_record() {
       int note = recording[playbackIndx];
       playbackIndx++;
       play_note(note);
+   } else {
+      play_note(-1);
    }
 }
 
