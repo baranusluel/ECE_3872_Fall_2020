@@ -197,9 +197,8 @@ void enter_play_live() {
 
    // Yellow LED when playing live?
    rgbLed.set(255, 255, 0);
-   // Turn off speaker
-   buzzer.off();
-   play_note(-1);
+   // Turn on sound
+   buzzer.on();
 }
 
 void enter_play_record() {
@@ -231,8 +230,9 @@ void loop_record() {
 }
 
 void loop_play_live() {
-   // Read input sensor and move motors to the note
+   // Read input sensor, play note and move motors to the note
    int note = read_input_note();
+   play_note(note);
    move_for_note(note);
 }
 
