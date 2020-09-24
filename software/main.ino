@@ -111,10 +111,10 @@ void loop () {
    // Reset button takes precedence over mode selection dial
    // (i.e. we always enter idle for at least one iteration on a reset)
    if (resetButton()) {
+      enter_idle();
       // If reset button was pressed for 3 seconds (counted every 0.5s)
       if (resetButtonCounter >= 5) {
          reset_recording();
-         enter_idle();
          resetButtonCounter = 0;
       } else {
          resetButtonCounter++;
