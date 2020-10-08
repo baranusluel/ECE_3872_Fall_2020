@@ -9035,9 +9035,9 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <part name="U$1" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="ARDUINO" device="-BPLACE" package3d_urn="urn:adsk.eagle:package:6240820/1"/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="R5" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/7" package3d_urn="urn:adsk.eagle:package:6240602/1" value="200 Ohm"/>
-<part name="R6" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/7" package3d_urn="urn:adsk.eagle:package:6240602/1" value="200 Ohm"/>
-<part name="R7" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/7" package3d_urn="urn:adsk.eagle:package:6240602/1" value="200 Ohm"/>
+<part name="R5" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/7" package3d_urn="urn:adsk.eagle:package:6240602/1" value="200"/>
+<part name="R6" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/7" package3d_urn="urn:adsk.eagle:package:6240602/1" value="200"/>
+<part name="R7" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/7" package3d_urn="urn:adsk.eagle:package:6240602/1" value="200"/>
 <part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
@@ -9258,6 +9258,16 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <pinref part="P+6" gate="1" pin="+5V"/>
 <wire x1="-810.26" y1="449.58" x2="-810.26" y2="452.12" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="JP-ROTARY-SWITCH" gate="A" pin="1"/>
+<wire x1="-1021.08" y1="541.02" x2="-1031.24" y2="541.02" width="0.1524" layer="91"/>
+<wire x1="-1031.24" y1="541.02" x2="-1031.24" y2="551.18" width="0.1524" layer="91"/>
+<pinref part="R1" gate="G$1" pin="2"/>
+<wire x1="-1031.24" y1="551.18" x2="-1046.48" y2="551.18" width="0.1524" layer="91"/>
+<pinref part="P+1" gate="1" pin="+5V"/>
+<wire x1="-1046.48" y1="553.72" x2="-1046.48" y2="551.18" width="0.1524" layer="91"/>
+<junction x="-1046.48" y="551.18"/>
+</segment>
 </net>
 <net name="N$8" class="0">
 <segment>
@@ -9323,6 +9333,16 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <wire x1="-820.42" y1="452.12" x2="-815.34" y2="452.12" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
 <wire x1="-815.34" y1="452.12" x2="-815.34" y2="447.04" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP-ROTARY-SWITCH" gate="A" pin="4"/>
+<wire x1="-1021.08" y1="533.4" x2="-1031.24" y2="533.4" width="0.1524" layer="91"/>
+<wire x1="-1031.24" y1="533.4" x2="-1031.24" y2="520.7" width="0.1524" layer="91"/>
+<pinref part="R4" gate="G$1" pin="1"/>
+<wire x1="-1031.24" y1="520.7" x2="-1046.48" y2="520.7" width="0.1524" layer="91"/>
+<pinref part="GND10" gate="1" pin="GND"/>
+<wire x1="-1046.48" y1="520.7" x2="-1046.48" y2="518.16" width="0.1524" layer="91"/>
+<junction x="-1046.48" y="520.7"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -9443,28 +9463,6 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <junction x="-1046.48" y="530.86"/>
 </segment>
 </net>
-<net name="N$22" class="0">
-<segment>
-<pinref part="JP-ROTARY-SWITCH" gate="A" pin="1"/>
-<wire x1="-1021.08" y1="541.02" x2="-1031.24" y2="541.02" width="0.1524" layer="91"/>
-<wire x1="-1031.24" y1="541.02" x2="-1031.24" y2="551.18" width="0.1524" layer="91"/>
-<pinref part="R1" gate="G$1" pin="2"/>
-<wire x1="-1031.24" y1="551.18" x2="-1046.48" y2="551.18" width="0.1524" layer="91"/>
-<pinref part="P+1" gate="1" pin="+5V"/>
-<wire x1="-1046.48" y1="553.72" x2="-1046.48" y2="551.18" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$23" class="0">
-<segment>
-<pinref part="JP-ROTARY-SWITCH" gate="A" pin="4"/>
-<wire x1="-1021.08" y1="533.4" x2="-1031.24" y2="533.4" width="0.1524" layer="91"/>
-<wire x1="-1031.24" y1="533.4" x2="-1031.24" y2="520.7" width="0.1524" layer="91"/>
-<pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="-1031.24" y1="520.7" x2="-1046.48" y2="520.7" width="0.1524" layer="91"/>
-<pinref part="GND10" gate="1" pin="GND"/>
-<wire x1="-1046.48" y1="520.7" x2="-1046.48" y2="518.16" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$16" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="A0"/>
@@ -9526,6 +9524,23 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="204,1,-990.6,508,U$1,VIN,,,,"/>
+<approved hash="204,1,-990.6,510.54,U$1,GND1,,,,"/>
+<approved hash="104,1,-990.6,513.08,U$1,GND2,GND,,,"/>
+<approved hash="104,1,-990.6,515.62,U$1,5V,+5V,,,"/>
+<approved hash="204,1,-990.6,518.16,U$1,3V,,,,"/>
+<approved hash="113,1,-917.166,460.959,JP-RGB-LED,,,,,"/>
+<approved hash="113,1,-830.588,519.656,JP-SERVO,,,,,"/>
+<approved hash="113,1,-1012.47,537.436,JP-ROTARY-SWITCH,,,,,"/>
+<approved hash="113,1,-1014.08,465.864,JP-TOF,,,,,"/>
+<approved hash="113,1,-866.366,555.97,JP-SW-RESET,,,,,"/>
+<approved hash="113,1,-779.784,485.366,JP-DC-MOTOR,,,,,"/>
+<approved hash="113,1,-1025.44,499.336,JP-POT,,,,,"/>
+<approved hash="113,1,-955.04,442.261,PWR,,,,,"/>
+<approved hash="113,1,-957.58,461.889,SW-PWR,,,,,"/>
+<approved hash="113,1,-1062.57,493.804,JP-AMP,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>
