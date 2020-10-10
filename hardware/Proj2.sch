@@ -8474,102 +8474,88 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <description>&lt;b&gt;Fuses and Fuse Holders&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="SHK20L" urn="urn:adsk.eagle:footprint:14046/1" library_version="2">
-<description>&lt;b&gt;FUSE HOLDER&lt;/b&gt;&lt;p&gt; 5 x 20 mm, SH contact, SHH1 Schukat / E1073 Buerklin</description>
-<wire x1="-5.334" y1="2.921" x2="5.334" y2="2.921" width="0.0508" layer="21"/>
-<wire x1="-3.302" y1="0" x2="3.302" y2="0" width="0.1524" layer="21"/>
-<wire x1="-10.414" y1="3.683" x2="-5.969" y2="3.683" width="0.1524" layer="21"/>
-<wire x1="-10.414" y1="-3.683" x2="-10.414" y2="-3.429" width="0.1524" layer="21"/>
-<wire x1="-10.414" y1="-2.54" x2="-5.969" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-10.414" y1="3.683" x2="-10.414" y2="3.429" width="0.1524" layer="21"/>
-<wire x1="-10.414" y1="2.54" x2="-5.969" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-5.969" y1="-3.683" x2="-10.414" y2="-3.683" width="0.1524" layer="21"/>
-<wire x1="-5.969" y1="-3.683" x2="-5.969" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-10.414" y1="-3.683" x2="-11.049" y2="-3.683" width="0.1524" layer="21"/>
-<wire x1="-11.049" y1="-3.683" x2="-11.049" y2="-2.032" width="0.1524" layer="21"/>
-<wire x1="-10.795" y1="-2.032" x2="-10.795" y2="-3.429" width="0.1524" layer="21"/>
-<wire x1="-10.795" y1="-3.429" x2="-10.414" y2="-3.429" width="0.1524" layer="21"/>
-<wire x1="-10.414" y1="-3.429" x2="-10.414" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-5.969" y1="2.54" x2="-5.969" y2="3.683" width="0.1524" layer="21"/>
-<wire x1="-11.049" y1="-2.032" x2="-11.049" y2="-1.27" width="0.1524" layer="51"/>
-<wire x1="-11.049" y1="-1.27" x2="-10.795" y2="-1.27" width="0.1524" layer="51"/>
-<wire x1="-10.795" y1="-1.27" x2="-10.795" y2="-2.032" width="0.1524" layer="51"/>
-<wire x1="-3.302" y1="0" x2="-5.334" y2="0" width="0.1524" layer="51"/>
-<wire x1="5.334" y1="-2.921" x2="-5.334" y2="-2.921" width="0.0508" layer="21"/>
-<wire x1="10.414" y1="-3.683" x2="5.969" y2="-3.683" width="0.1524" layer="21"/>
-<wire x1="10.414" y1="3.683" x2="10.414" y2="3.429" width="0.1524" layer="21"/>
-<wire x1="10.414" y1="2.54" x2="5.969" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="10.414" y1="-3.683" x2="10.414" y2="-3.429" width="0.1524" layer="21"/>
-<wire x1="10.414" y1="-2.54" x2="5.969" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="5.969" y1="3.683" x2="10.414" y2="3.683" width="0.1524" layer="21"/>
-<wire x1="5.969" y1="3.683" x2="5.969" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="10.414" y1="3.683" x2="11.049" y2="3.683" width="0.1524" layer="21"/>
-<wire x1="11.049" y1="3.683" x2="11.049" y2="2.032" width="0.1524" layer="21"/>
-<wire x1="10.795" y1="2.032" x2="10.795" y2="3.429" width="0.1524" layer="21"/>
-<wire x1="10.795" y1="3.429" x2="10.414" y2="3.429" width="0.1524" layer="21"/>
-<wire x1="10.414" y1="3.429" x2="10.414" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="5.969" y1="-2.54" x2="5.969" y2="-3.683" width="0.1524" layer="21"/>
-<wire x1="11.049" y1="2.032" x2="11.049" y2="1.27" width="0.1524" layer="51"/>
-<wire x1="11.049" y1="1.27" x2="10.795" y2="1.27" width="0.1524" layer="51"/>
-<wire x1="10.795" y1="1.27" x2="10.795" y2="2.032" width="0.1524" layer="51"/>
-<wire x1="3.302" y1="0" x2="5.334" y2="0" width="0.1524" layer="51"/>
-<wire x1="10.414" y1="-3.683" x2="11.049" y2="-3.683" width="0.1524" layer="21"/>
-<wire x1="11.049" y1="-2.032" x2="11.049" y2="-3.683" width="0.1524" layer="21"/>
-<wire x1="10.795" y1="-3.429" x2="10.795" y2="-2.032" width="0.1524" layer="21"/>
-<wire x1="10.795" y1="-3.429" x2="10.414" y2="-3.429" width="0.1524" layer="21"/>
-<wire x1="10.414" y1="-3.429" x2="10.414" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="11.049" y1="1.27" x2="11.049" y2="-2.032" width="0.1524" layer="51"/>
-<wire x1="10.795" y1="1.27" x2="10.795" y2="-2.032" width="0.1524" layer="51"/>
-<wire x1="-10.795" y1="2.032" x2="-10.795" y2="-1.27" width="0.1524" layer="51"/>
-<wire x1="-11.049" y1="2.032" x2="-11.049" y2="-1.27" width="0.1524" layer="51"/>
-<wire x1="-10.414" y1="3.683" x2="-11.049" y2="3.683" width="0.1524" layer="21"/>
-<wire x1="-10.795" y1="3.429" x2="-10.414" y2="3.429" width="0.1524" layer="21"/>
-<wire x1="-10.414" y1="3.429" x2="-10.414" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-10.795" y1="3.429" x2="-10.795" y2="2.032" width="0.1524" layer="21"/>
-<wire x1="-11.049" y1="2.032" x2="-11.049" y2="3.683" width="0.1524" layer="21"/>
-<pad name="1A" x="-10.414" y="0" drill="1.3208" diameter="2.54" shape="long" rot="R90"/>
-<pad name="2A" x="10.414" y="0" drill="1.3208" diameter="2.54" shape="long" rot="R90"/>
-<pad name="2B" x="5.334" y="0" drill="1.3208" diameter="2.54" shape="long" rot="R90"/>
-<pad name="1B" x="-5.334" y="0" drill="1.3208" diameter="2.54" shape="long" rot="R90"/>
-<text x="-3.81" y="3.175" size="1.778" layer="25" ratio="10">&gt;NAME</text>
-<text x="-3.81" y="-5.08" size="1.778" layer="27" ratio="10">&gt;VALUE</text>
-<rectangle x1="-10.033" y1="-2.032" x2="-9.652" y2="2.032" layer="51"/>
-<rectangle x1="-5.969" y1="-3.175" x2="-5.334" y2="-2.032" layer="21"/>
-<rectangle x1="-5.969" y1="2.032" x2="-5.334" y2="3.175" layer="21"/>
-<rectangle x1="-5.969" y1="-2.032" x2="-5.334" y2="2.032" layer="51"/>
-<rectangle x1="9.652" y1="-2.032" x2="10.033" y2="2.032" layer="51"/>
-<rectangle x1="5.334" y1="2.032" x2="5.969" y2="3.175" layer="21"/>
-<rectangle x1="5.334" y1="-3.175" x2="5.969" y2="-2.032" layer="21"/>
-<rectangle x1="5.334" y1="-2.032" x2="5.969" y2="2.032" layer="51"/>
-<rectangle x1="4.064" y1="1.651" x2="5.334" y2="2.159" layer="51"/>
-<rectangle x1="4.064" y1="-2.159" x2="5.334" y2="-1.651" layer="51"/>
-<rectangle x1="-5.334" y1="1.651" x2="-4.064" y2="2.159" layer="51"/>
-<rectangle x1="-5.334" y1="-2.159" x2="-4.064" y2="-1.651" layer="51"/>
-<rectangle x1="-10.414" y1="-2.54" x2="-5.969" y2="-2.032" layer="21"/>
-<rectangle x1="-4.064" y1="-2.159" x2="4.064" y2="-1.651" layer="21"/>
-<rectangle x1="-4.064" y1="1.651" x2="4.064" y2="2.159" layer="21"/>
-<rectangle x1="-6.223" y1="1.905" x2="-5.969" y2="2.032" layer="51"/>
-<rectangle x1="5.969" y1="1.905" x2="6.223" y2="2.032" layer="51"/>
-<rectangle x1="5.969" y1="-2.032" x2="6.223" y2="-1.905" layer="51"/>
-<rectangle x1="9.398" y1="1.905" x2="9.652" y2="2.032" layer="51"/>
-<rectangle x1="9.398" y1="-2.032" x2="9.652" y2="-1.905" layer="51"/>
-<rectangle x1="6.223" y1="-2.032" x2="9.398" y2="-1.905" layer="21"/>
-<rectangle x1="6.223" y1="1.905" x2="9.398" y2="2.032" layer="21"/>
-<rectangle x1="5.969" y1="2.032" x2="10.033" y2="2.54" layer="21"/>
-<rectangle x1="5.969" y1="-2.54" x2="10.033" y2="-2.032" layer="21"/>
-<rectangle x1="-10.033" y1="2.032" x2="-5.969" y2="2.54" layer="21"/>
-<rectangle x1="-9.398" y1="1.905" x2="-6.223" y2="2.032" layer="21"/>
-<rectangle x1="-9.652" y1="1.905" x2="-9.398" y2="2.032" layer="51"/>
-<rectangle x1="-6.223" y1="-2.032" x2="-5.969" y2="-1.905" layer="51"/>
-<rectangle x1="-9.398" y1="-2.032" x2="-6.223" y2="-1.905" layer="21"/>
-<rectangle x1="-9.652" y1="-2.032" x2="-9.398" y2="-1.905" layer="51"/>
+<package name="SH32" urn="urn:adsk.eagle:footprint:14044/1" library_version="2">
+<description>&lt;b&gt;FUSE HOLDER&lt;/b&gt;&lt;p&gt; 6 x 32 mm, SH contact, SHH3N Schukat / Wickmann 102071 (Buerklin)</description>
+<wire x1="9.017" y1="3.81" x2="9.525" y2="3.81" width="0.1524" layer="21"/>
+<wire x1="-8.89" y1="3.556" x2="8.89" y2="3.556" width="0.1524" layer="21"/>
+<wire x1="8.89" y1="3.556" x2="9.017" y2="3.556" width="0.1524" layer="21"/>
+<wire x1="9.017" y1="-3.81" x2="9.017" y2="-3.556" width="0.1524" layer="21"/>
+<wire x1="9.017" y1="-3.556" x2="8.89" y2="-3.556" width="0.1524" layer="21"/>
+<wire x1="8.89" y1="-3.556" x2="-8.89" y2="-3.556" width="0.1524" layer="21"/>
+<wire x1="9.017" y1="3.556" x2="9.017" y2="3.81" width="0.1524" layer="21"/>
+<wire x1="9.525" y1="-3.81" x2="9.525" y2="-4.445" width="0.1524" layer="21"/>
+<wire x1="9.525" y1="-3.81" x2="9.017" y2="-3.81" width="0.1524" layer="21"/>
+<wire x1="9.525" y1="-4.445" x2="16.764" y2="-4.445" width="0.1524" layer="21"/>
+<wire x1="16.764" y1="4.445" x2="9.525" y2="4.445" width="0.1524" layer="21"/>
+<wire x1="9.525" y1="3.81" x2="9.525" y2="4.445" width="0.1524" layer="21"/>
+<wire x1="9.525" y1="-3.81" x2="9.525" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="9.525" y1="3.81" x2="9.525" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="9.525" y1="-2.794" x2="16.002" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="9.525" y1="2.794" x2="16.002" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="16.764" y1="-2.032" x2="16.764" y2="2.032" width="0.1524" layer="51"/>
+<wire x1="16.002" y1="-2.032" x2="16.002" y2="2.032" width="0.1524" layer="51"/>
+<wire x1="9.017" y1="-2.032" x2="9.017" y2="0" width="0.1524" layer="51"/>
+<wire x1="16.764" y1="-2.032" x2="16.764" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="16.764" y1="-2.794" x2="16.764" y2="-4.445" width="0.1524" layer="21"/>
+<wire x1="16.002" y1="-2.032" x2="16.002" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="16.002" y1="-2.794" x2="16.764" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="16.764" y1="4.445" x2="16.764" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="16.764" y1="2.794" x2="16.764" y2="2.032" width="0.1524" layer="21"/>
+<wire x1="16.002" y1="2.032" x2="16.002" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="16.002" y1="2.794" x2="16.764" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="9.017" y1="2.032" x2="9.017" y2="3.556" width="0.1524" layer="21"/>
+<wire x1="9.017" y1="-2.032" x2="9.017" y2="-3.556" width="0.1524" layer="21"/>
+<wire x1="9.017" y1="0" x2="6.985" y2="0" width="0.0508" layer="51"/>
+<wire x1="9.017" y1="0" x2="9.017" y2="2.032" width="0.1524" layer="51"/>
+<wire x1="-9.017" y1="-3.81" x2="-9.525" y2="-3.81" width="0.1524" layer="21"/>
+<wire x1="8.89" y1="-3.556" x2="-9.017" y2="-3.556" width="0.1524" layer="21"/>
+<wire x1="-9.017" y1="3.81" x2="-9.017" y2="3.556" width="0.1524" layer="21"/>
+<wire x1="-9.017" y1="3.556" x2="8.89" y2="3.556" width="0.1524" layer="21"/>
+<wire x1="-9.017" y1="-3.556" x2="-9.017" y2="-3.81" width="0.1524" layer="21"/>
+<wire x1="-9.525" y1="3.81" x2="-9.525" y2="4.445" width="0.1524" layer="21"/>
+<wire x1="-9.525" y1="3.81" x2="-9.017" y2="3.81" width="0.1524" layer="21"/>
+<wire x1="-9.525" y1="4.445" x2="-16.764" y2="4.445" width="0.1524" layer="21"/>
+<wire x1="-16.764" y1="-4.445" x2="-9.525" y2="-4.445" width="0.1524" layer="21"/>
+<wire x1="-9.525" y1="-3.81" x2="-9.525" y2="-4.445" width="0.1524" layer="21"/>
+<wire x1="-9.525" y1="3.81" x2="-9.525" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="-9.525" y1="-3.81" x2="-9.525" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="-9.525" y1="2.794" x2="-16.002" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="-9.525" y1="-2.794" x2="-16.002" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="-16.764" y1="2.032" x2="-16.764" y2="-2.032" width="0.1524" layer="51"/>
+<wire x1="-16.002" y1="2.032" x2="-16.002" y2="-2.032" width="0.1524" layer="51"/>
+<wire x1="-9.017" y1="2.032" x2="-9.017" y2="0" width="0.1524" layer="51"/>
+<wire x1="-16.764" y1="2.032" x2="-16.764" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="-16.764" y1="2.794" x2="-16.764" y2="4.445" width="0.1524" layer="21"/>
+<wire x1="-16.002" y1="2.032" x2="-16.002" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="-16.002" y1="2.794" x2="-16.764" y2="2.794" width="0.1524" layer="21"/>
+<wire x1="-16.764" y1="-4.445" x2="-16.764" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="-16.764" y1="-2.794" x2="-16.764" y2="-2.032" width="0.1524" layer="21"/>
+<wire x1="-16.002" y1="-2.032" x2="-16.002" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="-16.002" y1="-2.794" x2="-16.764" y2="-2.794" width="0.1524" layer="21"/>
+<wire x1="-9.017" y1="-2.032" x2="-9.017" y2="-3.556" width="0.1524" layer="21"/>
+<wire x1="-9.017" y1="2.032" x2="-9.017" y2="3.556" width="0.1524" layer="21"/>
+<wire x1="-9.017" y1="0" x2="-6.985" y2="0" width="0.0508" layer="51"/>
+<wire x1="-9.017" y1="0" x2="-9.017" y2="-2.032" width="0.1524" layer="51"/>
+<wire x1="-6.985" y1="0" x2="6.985" y2="0" width="0.0508" layer="21"/>
+<pad name="2B" x="16.764" y="0" drill="2.0066" shape="long" rot="R90"/>
+<pad name="2A" x="9.144" y="0" drill="2.0066" shape="long" rot="R90"/>
+<pad name="1A" x="-16.764" y="0" drill="2.0066" shape="long" rot="R90"/>
+<pad name="1B" x="-9.144" y="0" drill="2.0066" shape="long" rot="R90"/>
+<text x="-7.62" y="3.937" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-7.62" y="-5.334" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="9.017" y1="-3.81" x2="9.525" y2="-2.159" layer="21"/>
+<rectangle x1="9.017" y1="2.159" x2="9.525" y2="3.81" layer="21"/>
+<rectangle x1="9.017" y1="-2.159" x2="9.525" y2="2.159" layer="51"/>
+<rectangle x1="-9.525" y1="-3.81" x2="-9.017" y2="-2.159" layer="21"/>
+<rectangle x1="-9.525" y1="2.159" x2="-9.017" y2="3.81" layer="21"/>
+<rectangle x1="-9.525" y1="-2.159" x2="-9.017" y2="2.159" layer="51"/>
 </package>
 </packages>
 <packages3d>
-<package3d name="SHK20L" urn="urn:adsk.eagle:package:14071/1" type="box" library_version="2">
-<description>FUSE HOLDER 5 x 20 mm, SH contact, SHH1 Schukat / E1073 Buerklin</description>
+<package3d name="SH32" urn="urn:adsk.eagle:package:14068/1" type="box" library_version="2">
+<description>FUSE HOLDER 6 x 32 mm, SH contact, SHH3N Schukat / Wickmann 102071 (Buerklin)</description>
 <packageinstances>
-<packageinstance name="SHK20L"/>
+<packageinstance name="SH32"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -8588,13 +8574,13 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="SHK20L" urn="urn:adsk.eagle:component:14100/2" prefix="F" uservalue="yes" library_version="2">
-<description>&lt;b&gt;FUSE HOLDER&lt;/b&gt;&lt;p&gt; 5 x 20 mm, SH contact, SHH1 Schukat, E1073 Buerklin</description>
+<deviceset name="SH32" urn="urn:adsk.eagle:component:14094/2" prefix="F" uservalue="yes" library_version="2">
+<description>&lt;b&gt;FUSE HOLDER&lt;/b&gt;&lt;p&gt; 6 x 32 mm, SH contact, SHH3N Schukat, 102071 Wickmann (Buerklin)</description>
 <gates>
 <gate name="G$1" symbol="FUSED" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SHK20L">
+<device name="" package="SH32">
 <connects>
 <connect gate="G$1" pin="1A" pad="1A"/>
 <connect gate="G$1" pin="1B" pad="1B"/>
@@ -8602,15 +8588,15 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <connect gate="G$1" pin="2B" pad="2B"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:14071/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:14068/1"/>
 </package3dinstances>
 <technologies>
 <technology name="">
 <attribute name="MF" value="" constant="no"/>
-<attribute name="MPN" value="" constant="no"/>
-<attribute name="OC_FARNELL" value="unknown" constant="no"/>
-<attribute name="OC_NEWARK" value="unknown" constant="no"/>
-<attribute name="POPULARITY" value="3" constant="no"/>
+<attribute name="MPN" value="10207101009" constant="no"/>
+<attribute name="OC_FARNELL" value="811786" constant="no"/>
+<attribute name="OC_NEWARK" value="76R6904" constant="no"/>
+<attribute name="POPULARITY" value="1" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -9189,7 +9175,7 @@ http://www.ladyada.net/library/pcb/eaglelibrary.html</description>
 <part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="U$2" library="diy-modules" deviceset="STEPPER-MOTOR-EASY-DRIVER" device=""/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="F1" library="fuse" library_urn="urn:adsk.eagle:library:233" deviceset="SHK20L" device="" package3d_urn="urn:adsk.eagle:package:14071/1"/>
+<part name="F1" library="fuse" library_urn="urn:adsk.eagle:library:233" deviceset="SH32" device="" package3d_urn="urn:adsk.eagle:package:14068/1"/>
 </parts>
 <sheets>
 <sheet>
