@@ -4,6 +4,7 @@
 ////////////////////////////////
 // Constants
 ////////////////////////////////
+
 #define BUZZER_PIN A1
 #define LED_R_PIN 0
 #define LED_G_PIN 1
@@ -21,6 +22,7 @@ const float noteFreqs[] =
 ////////////////////////////////
 // Global variables
 ////////////////////////////////
+
 enum State {
    STOP, // IDLE
    RECORD,
@@ -43,6 +45,7 @@ Servo servo;
 ////////////////////////////////
 
 /// State handlers:
+
 // On recording reset (button pressed 3 sec)
 void reset_recording();
 // Changes to specified state and runs one-time setup for state
@@ -69,16 +72,21 @@ void move_for_note(int note);
 void set_rgb_led(int red, int green, int blue);
 // Get mode from rotary switch
 State get_mode();
-
+// Sends given number of step pulses to the motor driver
+void pulse_motor(int steps);
 
 ////////////////////////////////
 // Entry Points
 ////////////////////////////////
+
 void setup() {
+  pinMode(BUZZER_PIN, OUTPUT);
   pinMode(LED_R_PIN, OUTPUT);
   pinMode(LED_G_PIN, OUTPUT);
   pinMode(LED_B_PIN, OUTPUT);
-  pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(RESET_BTN_PIN, INPUT);
+  pinMode(DC_STEP_PIN, OUTPUT);
+  pinMode(DC_DIR_PIN, OUTPUT);
   servo.attach(SERVO_PIN);
   lox.begin();
   enter_idle();
@@ -89,6 +97,7 @@ void setup() {
 // During normal execution, runs twice a second.
 void loop() {
    State currMode = get_mode();
+   // Change state only if mode switch changes
    if (currMode != oldMode) {
     oldMode = currMode;
     if (currMode == State::STOP) enter_idle();
@@ -97,10 +106,8 @@ void loop() {
     else if (currMode == State::PLAY_RECORD) enter_play_record();
    }
       
-   // Reset button takes precedence over mode selection dial
-   // (i.e. we always enter idle for at least one iteration on a reset)
+   // Reset button overrides selected state and enters idle
    if (digitalRead(RESET_BTN_PIN)) {
-      enter_idle();
       // If reset button was pressed for 3 seconds (counted every 0.5s)
       if (resetButtonCounter >= 5) {
          reset_recording();
@@ -108,6 +115,7 @@ void loop() {
       } else {
          resetButtonCounter++;
       }
+      enter_idle();
    } else {
       resetButtonCounter = 0;
    }
@@ -164,9 +172,9 @@ void enter_record() {
    // Red LED when recording
     for (int i = 0; i < 3; i++) {
       set_rgb_led(1, 0, 0);
-      delay(150);
+      delay(250);
       set_rgb_led(0, 0, 0);
-      delay(150);
+      delay(250);
    }
    set_rgb_led(1, 0, 0);
    // Turn off motor
@@ -176,8 +184,8 @@ void enter_record() {
 void enter_play_live() {
    state = State::PLAY_LIVE;
 
-   // Yellow LED when playing live?
-   set_rgb_led(1, 1, 0);
+   // Cyan LED when playing live
+   set_rgb_led(0, 1, 1);
 }
 
 void enter_play_record() {
@@ -189,9 +197,7 @@ void enter_play_record() {
    playbackIndx = 0;
 }
 
-void loop_idle() {
-  set_rgb_led(0, 0, 1);
-}
+void loop_idle() {}
 
 void loop_record() {
    // Read input sensor and play note
@@ -206,13 +212,14 @@ void loop_record() {
       // If exceeded maximum duration, indicate with dark LED
       set_rgb_led(0, 0, 0);
    }
-   delay(500);
+   delay(1000);
 }
 
 void loop_play_live() {
    // Read input sensor, play note and move motors to the note
    int note = read_input_note();
    play_note(note);
+   // Delay included in movement timing
    move_for_note(note);
 }
 
@@ -224,7 +231,8 @@ void loop_play_record() {
       playbackIndx++;
       play_note(note);
 
-      // Move motor to note
+      // Move motor to note.
+      // Delay included in movement timing
       move_for_note(note);
    } else {
       play_note(-1);
@@ -235,30 +243,33 @@ void play_note(int note) {
    if (note < 0 || note > 7)
       noTone(BUZZER_PIN);
    else
-      tone(BUZZER_PIN, noteFreqs[note], 500);
+      tone(BUZZER_PIN, noteFreqs[note], 1000);
 }
 
 void move_for_note(int note) {
    if (note < 0 || note > 7) {
       servo.write(0);
-      delay(500);
-   } else {
+      delay(1000);
+   } else {      
+      // Spining DC motor up and down to hit drum
+      pulse_motor(8); // stopped -> up
+      // Move servo horizontally
       servo.write((note + 1) * 22.5); // divide range of motion equally into intervals of 180/8=22.5
-      delay(500);
-      // Spin DC motor down to hit drum
-//      digitalWrite(DC_DIR_PIN, LOW);
-//      digitalWrite(DC_STEP_PIN, HIGH);
-//      delay(125);
-//      digitalWrite(DC_STEP_PIN, LOW);
-//      delay(125);
-//      
-////      digitalWrite(DC_DIR_PIN, HIGH);
-//      digitalWrite(DC_STEP_PIN, HIGH);
-//      delay(125);
-//      digitalWrite(DC_STEP_PIN, LOW);
-//      delay(125);
+      // Delay to allow time for vertical motion
+      delay(750);
+      pulse_motor(16); // up -> stopped -> down
+      delay(250);
+      pulse_motor(8); // down -> stopped
    }
-   
+}
+
+void pulse_motor(int steps) {
+  for (int i = 0; i < steps; i++) {
+      digitalWrite(DC_STEP_PIN, HIGH);
+      delayMicroseconds(5);
+      digitalWrite(DC_STEP_PIN, LOW);
+      delayMicroseconds(5);
+    }
 }
 
 void set_rgb_led(int red, int green, int blue) {
@@ -285,24 +296,22 @@ int read_input_note(){
   int note = 8;
   lox.rangingTest(&measure, false);
   if (measure.RangeStatus != 4) {  // phase failures have incorrect data
-    if(measure.RangeMilliMeter > 50 && measure.RangeMilliMeter < 100){
+    if (measure.RangeMilliMeter > 50 && measure.RangeMilliMeter <= 100){
       note = 0;
-     } else if ( measure.RangeMilliMeter > 100 && measure.RangeMilliMeter < 150) {
+     } else if (measure.RangeMilliMeter > 100 && measure.RangeMilliMeter <= 150) {
       note = 1;
-     } else if( measure.RangeMilliMeter > 150 && measure.RangeMilliMeter < 200) {
+     } else if (measure.RangeMilliMeter > 150 && measure.RangeMilliMeter <= 200) {
       note = 2;
-     } else if( measure.RangeMilliMeter > 200 && measure.RangeMilliMeter < 250) {
+     } else if (measure.RangeMilliMeter > 200 && measure.RangeMilliMeter <= 250) {
       note = 3;
-     } else if( measure.RangeMilliMeter > 250 && measure.RangeMilliMeter < 300) {
+     } else if (measure.RangeMilliMeter > 250 && measure.RangeMilliMeter <= 300) {
       note = 4;
-     } else if( measure.RangeMilliMeter > 300 &&  measure.RangeMilliMeter < 350) {
+     } else if (measure.RangeMilliMeter > 300 && measure.RangeMilliMeter <= 350) {
       note = 5;
-     } else if( measure.RangeMilliMeter > 350 &&  measure.RangeMilliMeter < 400) {
+     } else if (measure.RangeMilliMeter > 350 && measure.RangeMilliMeter <= 400) {
       note = 6;
-     } else if( measure.RangeMilliMeter > 400) {
+     } else if (measure.RangeMilliMeter > 400 && measure.RangeMilliMeter <= 450) {
       note = 7;
-     } else {
-      note = 8;
      }
   }
   return note;
