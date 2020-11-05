@@ -37,6 +37,8 @@ int playbackIndx = 0; // Current index in recording array for playback
 
 int resetButtonCounter = 0; // Counts how long reset button is pressed
 
+int oldNote = -1; // The previous note that was played, to check if new note is different
+
 Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 Servo servo;
 
@@ -87,10 +89,19 @@ void setup() {
   pinMode(RESET_BTN_PIN, INPUT);
   pinMode(DC_STEP_PIN, OUTPUT);
   pinMode(DC_DIR_PIN, OUTPUT);
+  
   servo.attach(SERVO_PIN);
   lox.begin();
+  
   enter_idle();
   oldMode = get_mode();
+
+  // Put stepper driver translator in correct state (zero current) by
+  // sending 4 pulses (found empirically), and then send 8 to move it up
+  // for starting position, 8 after delay to stop motion.
+  pulse_motor(4 + 8);
+  delay(750);
+  pulse_motor(8);
 }
 
 // Main loop method manages state changes and calls current state handlers.
@@ -109,7 +120,7 @@ void loop() {
    // Reset button overrides selected state and enters idle
    if (digitalRead(RESET_BTN_PIN)) {
       // If reset button was pressed for 3 seconds (counted every 0.5s)
-      if (resetButtonCounter >= 5) {
+      if (resetButtonCounter >= 3) {
          reset_recording();
          resetButtonCounter = 0;
       } else {
@@ -186,6 +197,8 @@ void enter_play_live() {
 
    // Cyan LED when playing live
    set_rgb_led(0, 1, 1);
+
+   oldNote = -1;
 }
 
 void enter_play_record() {
@@ -195,9 +208,13 @@ void enter_play_record() {
    set_rgb_led(0, 1, 0);
    // Reset playback index for recording array
    playbackIndx = 0;
+
+   oldNote = -1;
 }
 
-void loop_idle() {}
+void loop_idle() {
+  delay(1000);
+}
 
 void loop_record() {
    // Read input sensor and play note
@@ -219,8 +236,13 @@ void loop_play_live() {
    // Read input sensor, play note and move motors to the note
    int note = read_input_note();
    play_note(note);
-   // Delay included in movement timing
-   move_for_note(note);
+   if (note != oldNote) {
+     // Delay included in movement timing
+     move_for_note(note);
+     oldNote = note;
+   } else {
+     delay(1000);
+   }
 }
 
 void loop_play_record() {
@@ -231,11 +253,17 @@ void loop_play_record() {
       playbackIndx++;
       play_note(note);
 
-      // Move motor to note.
-      // Delay included in movement timing
-      move_for_note(note);
+      if (note != oldNote) {
+        // Move motor to note.
+        // Delay included in movement timing
+        move_for_note(note);
+        oldNote = note;
+      } else {
+        delay(1000);
+      }
    } else {
       play_note(-1);
+      delay(1000);
    }
 }
 
@@ -247,20 +275,20 @@ void play_note(int note) {
 }
 
 void move_for_note(int note) {
-   if (note < 0 || note > 7) {
-      servo.write(0);
-      delay(1000);
-   } else {      
-      // Spining DC motor up and down to hit drum
-      pulse_motor(8); // stopped -> up
-      // Move servo horizontally
-      servo.write((note + 1) * 22.5); // divide range of motion equally into intervals of 180/8=22.5
-      // Delay to allow time for vertical motion
-      delay(750);
-      pulse_motor(16); // up -> stopped -> down
-      delay(250);
-      pulse_motor(8); // down -> stopped
-   }
+  if (note < 0 || note > 7) {
+    servo.write(180);
+  } else {
+    // Move servo horizontally
+    servo.write(180 - (note + 1) * 22.5); // divide range of motion equally into intervals of 180/8=22.5
+    delay(300);
+    // Spining DC motor up and down to hit drum
+    pulse_motor(8); // stopped -> down
+    // Delay to allow time for vertical motion
+    delay(50);
+    pulse_motor(16); // down -> stopped -> up
+    delay(650);
+    pulse_motor(8); // up -> stopped
+  }
 }
 
 void pulse_motor(int steps) {
